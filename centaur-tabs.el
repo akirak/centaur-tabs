@@ -306,6 +306,16 @@ tab(B), move A to the left of B" t)
 		 (const :tag "Move the currently selected tab to the left of the the last visited tab." left)
 		 (const :tag "Move the currently selected tab to the right of the the last visited tab." right)))
 
+(defcustom centaur-tabs-header-line-format
+  '(:eval (centaur-tabs-line))
+  "The tab bar header line format.
+
+This variable accepts the same format as `mode-line-format'.
+See the documentation on `mode-line-format' for details.
+
+This variable must be set before `centaur-tabs-mode' is enabled."
+  :group 'centaur-tabs
+  :type 'sexp)
 
 (defvar centaur-tabs--buffer-show-groups nil)
 
@@ -854,9 +864,6 @@ Inhibit display of the tab bar in current window `centaur-tabs-hide-tab-function
     ;; When available, use a cached tab bar value, else recompute it.
     (or (centaur-tabs-template centaur-tabs-current-tabset)
 	(centaur-tabs-line-format centaur-tabs-current-tabset)))))
-
-(defconst centaur-tabs-header-line-format '(:eval (centaur-tabs-line))
-  "The tab bar header line format.")
 
 ;;; Cyclic navigation through tabs
 ;;
